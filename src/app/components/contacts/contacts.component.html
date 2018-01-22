@@ -16,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let contact of contacts" [contactRow]="contact"></tr>
+    <tr *ngFor="let contact of contacts" [contactRow]="contact" (onEdit)="contactForm.edit(contact)" (onRemove)="remove(contact)"></tr>
 </table>
 
 <router-outlet></router-outlet>

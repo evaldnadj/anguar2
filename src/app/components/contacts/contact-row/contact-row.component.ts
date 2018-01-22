@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Contact } from '../../../shared/models/contact.model';
 
 @Component ({
@@ -7,6 +7,23 @@ import { Contact } from '../../../shared/models/contact.model';
 }) 
 
 export class ContactRowComponent {
-    @Input() contactRow: Contact;
+
+    private contact: Contact;
+
+    @Input() 
+    set contactRow (contact:Contact) {   
+        this.contact = contact;
+    }
+
+    @Output() onEdit = new EventEmitter<Contact>();
+    @Output() onRemove = new EventEmitter<Contact>();
+
+
+    edit(contact) {
+        this.onEdit.emit(contact);
+    }
+    remove(contact) {
+        this.onRemove.emit(contact);
+    }
 
 }
