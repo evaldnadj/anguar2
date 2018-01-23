@@ -24,9 +24,16 @@ export class ContactsComponent {
   }
 
   remove(contact) {
-    const index = this.contacts.indexOf(contact);
-    this.contacts.splice(index, 1);
+   // const index = this.contacts.indexOf(contact);
+   // this.contacts.splice(index, 1);
+
+   this.contactService.removeContact(contact)
+   .subscribe((contact) => {
+     const index = this.contacts.indexOf(contact);
+     this.contacts.splice(index, 1);
+   });
   }
+
 
   submitContact(contact: Contact) {
     if (contact.id) {
