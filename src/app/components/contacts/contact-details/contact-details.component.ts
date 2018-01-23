@@ -1,6 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Injector } from '@angular/core';
+
 import { ContactsService } from '../../../shared/services/contacts.service';
 import { PageTitleService } from '../../../shared/services/page-title.service';
 
@@ -33,5 +34,9 @@ export class ContactDetailsComponent implements OnInit {
           this.pageTitleService.setTitle (`Contact - ${id}`); 
         });
     });
+  }
+  ngOnDestroy() {
+    this.pageTitleService.setTitle('Contact')
+
   }
 }
